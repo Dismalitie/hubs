@@ -15,11 +15,6 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local isFreecam = false
-if advanced == nil then
-   local advanced = false
-else
-   advanced = not advanced
-end
 
 --functions
 
@@ -46,12 +41,8 @@ end)
 
 --camtab
 
-cameratab:CreateButton("Button", function()
-   
-end)
- 
-cameratab:CreateTextbox("TextBox", function(text)
-   print(text)
+cameratab:CreateButton("Freecam", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxSkriptr/RBLXSkriptr/main/Free%20Camera.lua", true))()
 end)
  
 cameratab:CreateToggle("Freeze Cam", function()
@@ -66,23 +57,12 @@ cameratab:CreateToggle("Freeze Cam", function()
   end
 end)
 
-cameratab:CreateDropdown("DropDown", {"Hello", "World", "Hello World"}, 2, function(text)
-   print(text)
-end)
- 
-cameratab:CreateSlider("Slider", 0, 100, 15, false, function(value)
-   print(value)
- end)
-cameratab:CreateColorPicker("Picker", Color3.new(255, 255, 255), function(value)
-   print(value)
-end)
-
 --guitab
-gui:CreateToggle("Hide UI Instances", function()
+gui:CreateButton("Hide UI Instances", function()
 local hideui = false
 hideui = not hideui
 while hideui == true do
-wait(hideuirr)
+wait(0.001)
    -- Find all children of the game's "Players" service
 local children = game:GetService("Players"):GetChildren()
 
@@ -98,28 +78,34 @@ for _, child in ipairs(children) do
     end
 end
 end
-while hideui == false do
-   wait(hideuirr)
-   -- Find all children of the game's "Players" service
-local children = game:GetService("Players"):GetChildren()
+end)
+gui:CreateButton("Hide Players", function()
+local hideplayers = false
+hideplayers = not hideplayers
+while hideplayers == true do
+wait(0.001)
+   local players = game:GetService("Players")
+local player = players.LocalPlayer
 
--- Loop through each child and check if it has a "PlayerGui" object
-for _, child in ipairs(children) do
-    if child:IsA("Player") and child:FindFirstChild("PlayerGui") then
-        local playerGui = child.PlayerGui
-        
-        -- Loop through each child of the PlayerGui object and hide it
-        for _, guiObject in ipairs(playerGui:GetChildren()) do
-            guiObject.Enabled = true
+-- Hide all other players
+for _, otherPlayer in ipairs(players:GetPlayers()) do
+    if otherPlayer ~= player then
+        local character = otherPlayer.Character
+        if character then
+            for _, part in ipairs(character:GetDescendants()) do
+                if part:IsA("BasePart") or part:IsA("Decal") then
+                    part.Transparency = 1
+                end
+            end
         end
     end
 end
 end
 end)
 
-if advanced == true then
-   cinesettings:CreateSlider("^^GUI Refresh Rate", 0, 5, 1, false, function(hideuirr) end)
-end
-cinesettings:CreateButton("Reload", function()
-   loadstring(game:HttpGet("https://github.com/Dismalitie/hubs/blob/main/cinehub.lua"))
+gui:CreateButton("Hide Chat Bubbles", function()
+local chatService = game:GetService("Chat")
+
+-- Hide all chat bubbles
+chatService:SetBubbleChatEnabled(false)
 end)
