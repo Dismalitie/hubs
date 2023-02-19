@@ -1,5 +1,5 @@
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
- 
+rconsolename("CineHub Game Capture Service")
 local window = Library:NewWindow("CineHub")
  
 local cameratab = window:NewSection("Camera")
