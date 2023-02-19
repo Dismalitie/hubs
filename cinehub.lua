@@ -15,10 +15,13 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local isFreecam = false
-local advanced = false
+if advanced == nil then
+   local advanced = false
+else
+   advanced = not advanced
+end
 
 --functions
-
 
 -- Function to enable/disable freecam
 function toggleFreecam()
@@ -117,3 +120,6 @@ end)
 if advanced == true then
    gui:CreateSlider("^^GUI Refresh Rate", 0, 5, 1, false, function(hideuirr) end)
 end
+settings:CreateButton("Reload", function()
+   loadstring(game:HttpGet("https://github.com/Dismalitie/hubs/blob/main/cinehub.lua"))
+end)
