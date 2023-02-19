@@ -1,8 +1,12 @@
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
-rconsolename("CineHub Game Capture Service")
 local window = Library:NewWindow("CineHub")
 local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+
+--functions
+if captureService == true then
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Dismalitie/hubs/main/cinehub-captureservice.lua"))
+end
  
 local cameratab = window:NewSection("Camera")
 local gui = window:NewSection("GUI")
@@ -17,8 +21,6 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local isFreecam = false
-
---functions
 
 -- Function to enable/disable freecam
 function toggleFreecam()
