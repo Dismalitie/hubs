@@ -5,7 +5,8 @@ local window = Library:NewWindow("CineHub")
 local cameratab = window:NewSection("Camera")
 local gui = window:NewSection("GUI")
 local cinesettings = window:NewSection("Settings")
-   cinesettings:CreateDropdown("Advanced Settings", {"true", "false"}, 2, function(advanced) 
+   cinesettings:CreateDropdown("Advanced Settings", {"true", "false"}, 2, function(advanced)
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/Dismalitie/hubs/main/cinehub.lua"))
    end)
 
 -- Define variables
