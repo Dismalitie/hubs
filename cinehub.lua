@@ -118,8 +118,8 @@ end
 end)
 
 if advanced == true then
-   gui:CreateSlider("^^GUI Refresh Rate", 0, 5, 1, false, function(hideuirr) end)
+   cinesettings:CreateSlider("^^GUI Refresh Rate", 0, 5, 1, false, function(hideuirr) end)
 end
-settings:CreateButton("Reload", function()
+cinesettings:CreateButton("Reload", function()
    loadstring(game:HttpGet("https://github.com/Dismalitie/hubs/blob/main/cinehub.lua"))
 end)
