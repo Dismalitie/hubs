@@ -3,12 +3,6 @@ rconsolename("CineHub Game Capture Service")
 local window = Library:NewWindow("CineHub")
 local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
-wait(1)
-Notification:Notify(
-    {Title = "CineHub - Freecam", Description = "Press 'Shift + P' to toggle and hold 'Shift' to alter speed."},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
-    {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
-)
  
 local cameratab = window:NewSection("Camera")
 local gui = window:NewSection("GUI")
@@ -51,6 +45,12 @@ end)
 
 cameratab:CreateButton("Freecam", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxSkriptr/RBLXSkriptr/main/Free%20Camera.lua", true))()
+        wait(1)
+Notification:Notify(
+    {Title = "CineHub - Freecam", Description = "Press 'Shift + P' to toggle and hold 'Shift' to alter speed."},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
+    {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
+)
 end)
  
 cameratab:CreateToggle("Freeze Cam", function()
